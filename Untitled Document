@@ -1,0 +1,42 @@
+User:
+- user_id
+- username
+- password
+- first_name
+- last_name
+- address
+- camera
+- lens
+- rank_id
+- type_id
+
+Photo:
+- photo_id
+- user_id
+- category_id
+- date
+- description
+
+Frames:
+- frame_id
+- photo_id
+- user_id
+
+Categories:
+- category_id
+- category_name
+
+Comments:
+- comment_id
+- photo_id
+- user_id
+- text
+- date
+
+Ranks:
+- rank_id
+- rank_name
+
+Types:
+- type_id
+- type_name
