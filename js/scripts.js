@@ -26,9 +26,11 @@ site.prototype = {
             if ($(this).scrollTop() > 400) {
                 $("#logo").attr('id','logo-small');
                 $("#header-cont").attr('id',"header-cont-small");
+                $(".edit").show();
             } else {
                 $("#header-cont-small").attr('id','header-cont');
                 $("#logo-small").attr('id','logo');
+                $(".edit").hide();
             }
             if (($(this).scrollTop() > 600)) {
                 if ($(this).scrollTop() <= ($("html").height() - 600))
@@ -129,9 +131,9 @@ site.prototype = {
 
         $(document).ready(function()
         {
-            adjustHeaderFooter();
+        adjustHeaderFooter();
         generateDivs();
-        placeCornerFrames();
+         setTimeout(function() {placeCornerFrames();},200);
         });
     }
 

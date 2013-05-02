@@ -7,11 +7,16 @@ class Membership {
 	function validate_user($un, $pwd) {
 		$mysql = New Mysql();
 		$check = $mysql->verifyUsernameAndPassword($un, md5($pwd));
+		$id = $mysql->getUserId($un);
 		
 		if($check) {
 			$_SESSION['status'] = 'authorized';
 			$_SESSION['username']=$un;
+
+			$_SESSION['user_id']=$id;
 			header("location: index.php");
+			
+
 		} else return "Please enter a correct username and password";
 		
 	} 

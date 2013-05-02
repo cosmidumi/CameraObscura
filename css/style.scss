@@ -466,3 +466,49 @@ background:-webkit-gradient(linear,left top,left 25,from(black),color-stop(0%,#3
   position:relative;
   float: left;  
 }
+
+.edit
+{
+  position: fixed; 
+  top:0;
+  width: 100%;
+  float:left; 
+  z-index:1001; 
+  clear:both; 
+  background: #515151;
+background: -moz-linear-gradient(top, black, #3c3c3c 1px, #515151 25px);
+background: -webkit-gradient(linear, left top, left 25, from(black), color-stop(5%, #3c3c3c), to(#515151));
+  left:100px;
+  height:42px;
+}
+
+.brightness
+{
+  position:relative; display:inline; color: white; font-size: 12px; padding-right:8px; padding-left:8px
+}
+
+.editUL {
+  float:left;
+  display: inline;
+  position:relative;
+  top:8px;
+}
+.editUL li{
+  display: inline;
+    //top:px;
+    position:relative;
+         width: 22px;
+    height: 22px;
+
+}
+.editUL li img{
+    position:relative;
+    top:5px;
+      width: 22px;
+    height: 22px;
+}
+
+.editUL li a
+{
+  cursor: default;
+}

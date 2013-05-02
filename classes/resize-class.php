@@ -45,6 +45,25 @@ class resize {
 		$this->state=1;
 	}
 
+	public function censorImage( $newWidth, $newHeight, $x, $y, $option="auto" ) {
+
+		$this->imageResized = imagecreatetruecolor( $this->width, $this->height );
+
+		imagecopyresampled( $this->imageResized, $this->img, 0, 0, 0, 0, $this->width, $this->height, $this->width, $this->height );
+
+		$img2 = imagecreatetruecolor( $newWidth, $newHeight );
+
+		imagecopyresampled( $img2, $this->img, 0, 0, $x, $y, $newWidth, $newHeight, $newWidth, $newHeight );
+
+
+		for ( $i=0;$i<=30;$i++ )
+			imagefilter( $img2, IMG_FILTER_GAUSSIAN_BLUR );
+
+		imagecopy( $this->imageResized, $img2 , $x, $y, 0, 0, $newWidth, $newHeight );
+		$this->state=1;
+		imagedestroy($img2);
+	}
+
 
 
 	public function resizeImage( $size, $option="resize" ) {
@@ -67,31 +86,46 @@ class resize {
 			imagefilter( $this->imageResized, IMG_FILTER_GRAYSCALE );
 			imagefilter( $this->imageResized, IMG_FILTER_COLORIZE, 100, 50, 0 );
 		}
-		else if ( $type=="2e")
-		{
-			imagefilter($this->imageResized, IMG_FILTER_NEGATE);
-		}
-		else if ( $type=="3e")
-		{
-			imagefilter($this->imageResized, IMG_FILTER_GRAYSCALE);
-		}
-		else if ( $type=="4e")
-		{
-			imagefilter($this->imageResized, IMG_FILTER_COLORIZE, 100, 0, 0);
-		}
-		else if ( $type=="5e")
-		{
-			imagefilter($this->imageResized, IMG_FILTER_EDGEDETECT);
-		}
+		else if ( $type=="2e" ) {
+				imagefilter( $this->imageResized, IMG_FILTER_NEGATE );
+			}
+		else if ( $type=="3e" ) {
+				imagefilter( $this->imageResized, IMG_FILTER_GRAYSCALE );
+			}
+		else if ( $type=="4e" ) {
+				imagefilter( $this->imageResized, IMG_FILTER_COLORIZE, 100, 0, 0 );
+			}
+		else if ( $type=="5e" ) {
+				imagefilter( $this->imageResized, IMG_FILTER_EDGEDETECT );
+			}
+		else if ( $type=="6e" ) {
+				imagefilter($this->imageResized, IMG_FILTER_MEAN_REMOVAL);
+			}
 		$this->state=1;
 	}
 
-	public function rotateImage( $deg )
+	public function brightness ($type)
 	{
-
 		$this->imageResized = imagecreatetruecolor( $this->width, $this->height );
 		imagecopyresampled( $this->imageResized, $this->img, 0, 0, 0, 0, $this->width, $this->height, $this->width, $this->height );
-		$this->imageResized = imagerotate($this->imageResized, $deg, 0);
+		if ($type=="minbright") imagefilter($this->imageResized, IMG_FILTER_BRIGHTNESS, 20);
+		else imagefilter($this->imageResized, IMG_FILTER_BRIGHTNESS, -20);
+		$this->state=1;
+	}
+
+		public function contrast ($type)
+	{
+		$this->imageResized = imagecreatetruecolor( $this->width, $this->height );
+		imagecopyresampled( $this->imageResized, $this->img, 0, 0, 0, 0, $this->width, $this->height, $this->width, $this->height );
+		if ($type=="mincontrast") imagefilter($this->imageResized, IMG_FILTER_CONTRAST, 20);
+		else imagefilter($this->imageResized, IMG_FILTER_CONTRAST, -20);
+		$this->state=1;
+	}
+
+	public function rotateImage( $deg ) {
+	$this->imageResized= imagecreatetruecolor($this->width , $this->height );
+		 imagecopyresampled( $this->imageResized, $this->img, 0, 0, 0, 0, $this->width, $this->height, $this->width, $this->height );
+		$this->imageResized = imagerotate( $this->imageResized, $deg, 16777215 );
 		$this->state=1;
 	}
 

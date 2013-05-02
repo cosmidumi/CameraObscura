@@ -20,8 +20,8 @@ else
 if($_POST['type']=="save")
 {
 	$src2 = $_POST['src2'];
-	$obj = new resize( $src2 );
-	$obj -> saveImage( $src , 100 );
+	$obj = new resize( $src );
+	$obj -> saveImage( $src2 , 100 );
 }
 else
 if($_POST['type']=="effect")
@@ -31,9 +31,27 @@ $resizeObj -> applyEffect( $_POST['effectType'] );
 $resizeObj -> saveImage( 'temp/poza.jpg', 100 );
 }
 else
+if (($_POST['type']=="minbright") or ($_POST['type']=="maxbright")) {
+	$resizeObj = new resize ($src);
+	$resizeObj -> brightness($_POST['type']);
+	$resizeObj -> saveImage ('temp/poza.jpg', 100);
+}
+else
+if (($_POST['type']=="mincontrast") or ($_POST['type']=="maxcontrast")) {
+	$resizeObj = new resize ($src);
+	$resizeObj -> contrast($_POST['type']);
+	$resizeObj -> saveImage ('temp/poza.jpg', 100);
+}
+else
 if($_POST['type']=="rotate")
 {	$resizeObj = new resize( $src );
 	$resizeObj -> rotateImage($_POST['deg']);
 	$resizeObj -> saveImage( 'temp/poza.jpg', 100 );
+}
+if($_POST['type']=="censor")
+{
+	$resizeObj = new resize( $src );
+$resizeObj -> censorImage( $_POST['w'], $_POST['h'], $_POST['x'], $_POST['y'], 'censor' );
+$resizeObj -> saveImage( 'temp/poza.jpg', 100 );
 }
 exit;

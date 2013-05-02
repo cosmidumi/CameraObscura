@@ -3,6 +3,7 @@ require_once 'classes/Membership.php';
 $membership = new Membership();
 
 $membership->confirm_Member();
+echo $_SESSION['user_id'];
 ?>
 <!DOCTYPE HTML>
 <html>
