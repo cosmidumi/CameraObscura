@@ -20,8 +20,12 @@ else
 if($_POST['type']=="save")
 {
 	$src2 = $_POST['src2'];
+	$src3 = $_POST['src3'];
 	$obj = new resize( $src );
-	$obj -> saveImage( $src2 , 100 );
+	$obj -> saveImage( $src3 , 100 );
+	$resizeObj = new resize( $src );
+    $resizeObj -> resizeImage( '5','resize' );
+    $resizeObj -> saveImage( $src2, 100 );
 }
 else
 if($_POST['type']=="effect")

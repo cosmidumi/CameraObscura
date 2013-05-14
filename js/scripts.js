@@ -1,5 +1,4 @@
 var site = function() {
-	this.navLi = $('.nav li').children('ul').hide().end();
 	this.init();
 };
 
@@ -9,28 +8,20 @@ site.prototype = {
  		this.setMenu();
  	},
  	
- 	// Enables the slidedown menu, and adds support for IE6
- 	
  	setMenu : function() {
- 	
- 	
- 		this.navLi.hover(function() {
- 			// mouseover
-			$(this).find('> ul').stop(true, true).slideDown('slow', 'easeOutBounce');
- 		}, function() {
- 			// mouseout
- 			$(this).find('> ul').stop(true, true).hide(); 		
-		});
  		
  	    $(window).scroll(function(){
+            placeCornerFrames();
             if ($(this).scrollTop() > 400) {
                 $("#logo").attr('id','logo-small');
                 $("#header-cont").attr('id',"header-cont-small");
                 $(".edit").show();
+                $(".fixedBar").show();
             } else {
                 $("#header-cont-small").attr('id','header-cont');
                 $("#logo-small").attr('id','logo');
                 $(".edit").hide();
+                $(".fixedBar").hide();
             }
             if (($(this).scrollTop() > 600)) {
                 if ($(this).scrollTop() <= ($("html").height() - 600))
@@ -41,8 +32,6 @@ site.prototype = {
                    {
                         $('.scrollup').css('bottom','120px');
                     }
-                //alert(($("html").height() - 100));
-                //alert($(this).scrollTop());
                 $('.scrollup').fadeIn();
             } else {
                 $('.scrollup').fadeOut();
@@ -108,11 +97,14 @@ site.prototype = {
             "border-bottom-right-radius":btlr[3]    
         });
        y='#mask'+(i+1);
-       $("<h2> Dragut"+(i+1)+"</h2>").appendTo(y);
-       $("<p> Text"+(i+1)+"</p>").appendTo(y);
-    //   $("<a href='#' class='info'> Read More </a>").appendTo(y);
+       $("<h2> HeaderPhotoDescription"+(i+1)+"</h2>").appendTo(y);
+       $("<p> TextDescription"+(i+1)+"</p>").appendTo(y);
         }
     }
+
+    $(".close").click(function(){
+    window.history.back();
+    });
 
     function placeCornerFrames()
     {
@@ -129,14 +121,14 @@ site.prototype = {
         $("#footer").css('width',($("#head").width()) +"px");
     }
 
-        $(document).ready(function()
-        {
-        adjustHeaderFooter();
-        generateDivs();
-         setTimeout(function() {placeCornerFrames();},200);
-        });
+    $(document).ready(function()
+    {
+    $(".fixedBar").hide();
+    adjustHeaderFooter();
+    generateDivs();
+    setTimeout(function() { placeCornerFrames(); }, 100);
+    });
     }
-
 
  
 }
