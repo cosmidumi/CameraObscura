@@ -68,7 +68,7 @@ class resize {
 
 
 	public function resizeImage( $size, $option="resize" ) {
-		if($size!=5)
+		if(($size!=5)&&($size!=6)&&($size!=7))
 		{
 			$array = array ( "1" => "0.75", "2" => "0.5", "3" => "0.4", "4" => "0.25" );
 		$newWidth=$this->width * ( $array[$size] );
@@ -77,7 +77,7 @@ class resize {
 
 		imagecopyresampled( $this->imageResized, $this->img, 0, 0, 0, 0, $newWidth, $newHeight, $this->width, $this->height );
 		}
-		else
+		else if ($size==5)
 		{
 		$nx = 200;
 		$ny = floor($this->height * ($nx / $this->width));
@@ -87,6 +87,28 @@ class resize {
 	    imagefill($final, 0, 0, $backgroundColor);
 	    imagecopyresampled( $this->imageResized, $final, 0, 0, 0, 0, $nx, $nx, $nx, $nx	 );
 		imagecopyresampled( $this->imageResized, $this->img, 0, (200-$ny)/2, 0, 0, $nx, $ny, $this->width, $this->height );
+		}
+		else if ($size==6)
+		{
+		$nx = 75;
+		$ny = floor($this->height * ($nx / $this->width));
+		$this->imageResized = imagecreatetruecolor( $nx, $nx );
+		$final = imagecreatetruecolor($nx, $nx);
+    	$backgroundColor = imagecolorallocate($final, 255, 255, 255);
+	    imagefill($final, 0, 0, $backgroundColor);
+	    imagecopyresampled( $this->imageResized, $final, 0, 0, 0, 0, $nx, $nx, $nx, $nx	 );
+		imagecopyresampled( $this->imageResized, $this->img, 0, (75-$ny)/2, 0, 0, $nx, $ny, $this->width, $this->height );
+		}
+		else if ($size==7)
+		{
+		$nx = 40;
+		$ny = floor($this->height * ($nx / $this->width));
+		$this->imageResized = imagecreatetruecolor( $nx, $nx );
+		$final = imagecreatetruecolor($nx, $nx);
+    	$backgroundColor = imagecolorallocate($final, 255, 255, 255);
+	    imagefill($final, 0, 0, $backgroundColor);
+	    imagecopyresampled( $this->imageResized, $final, 0, 0, 0, 0, $nx, $nx, $nx, $nx	 );
+		imagecopyresampled( $this->imageResized, $this->img, 0, (40-$ny)/2, 0, 0, $nx, $ny, $this->width, $this->height );
 		}
 		$this->state=1;
 	}

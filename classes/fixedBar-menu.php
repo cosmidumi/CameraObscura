@@ -10,7 +10,7 @@ if ( ( $_SESSION['username']!='' ) && ( $_GET['status']!='loggedout' ) ):
                                 <span style="color:grey; position:relative; left:8px;top:3px;display:inline; float:left;">|</span>
                             </li>
                             <li title="Setari">
-                                <a href="index.php">
+                                <a href="/profile.php?user=<?php echo $_SESSION['user_id']?>" />
                                 <p> Setari </p>
                                 <img  class="rotation" src="/images/icons/settingsbig.png">
                                 </a>

@@ -14,8 +14,6 @@
         }); 
         }
 
-        
-
         rotation(".rotation", 180, 0);
         rotation(".apply",180,0);
         rotation("#rotateleft", 180, 360  );
@@ -23,7 +21,7 @@
         $("#rotateleft").click(function(){
         rotval=$("#amount").val();
         if (parseInt(rotval) >= 360 )
-            rotval=360-parseInt(rotval);
+        rotval=360-parseInt(rotval);
         rotval=parseInt(rotval)+90;
         $("#amount").attr('value',rotval);
         changeAmount();
@@ -89,7 +87,8 @@
         };
 
 
-                    $("#myImg").attr('src',$("#cropbox").attr('src'));
+        $("#myImg").attr('src',$("#cropbox").attr('src'));
+
 /*
         $("#effectHead").hover(  function () {
             $("#effectsHidden").show();
@@ -101,7 +100,7 @@
         $(document).ready(function(){
      //   $("#effectsHidden").hide();
         $("#amount").attr('value',0);
-        $("body").append("<div id='cropContainer' style='position:relative; margin-right:auto;margin-left:auto; display: table; margin:0 auto;'><\/div>");
+        $("body").append("<div id='cropContainer' style='position:relative; margin-right:auto;margin-left:auto; display: table; margin:0 auto;'></div>");
         $("#myImg").hide();
         setTimeout(function() {
         $(".jcrop-holder").appendTo("#cropContainer");
@@ -127,12 +126,17 @@
         'h':$('#h').val(),
         'src':$('#myImg').attr('src')
         }, function(data){
+        $("*").css("cursor", "progress");
+        var x=($("#myImg").height()+$("#myImg").width())*0.75;
         //  $("#cropped").append(t);
+        setTimeout(function() {
+
+        $("*").css("cursor", "auto");
         $("#myImg").attr('src','temp/poza.jpg');
         $("#cropbox").attr('src','temp/poza.jpg');
         $(".jcrop-holder").children("img").attr('src','temp/poza.jpg');
         $(".jcrop-holder").children().children().children("img").attr('src','temp/poza.jpg');
-
+}, x);
         setTimeout(function() {
         $(".jcrop-holder").children("img").width($("#myImg").width());
         $(".jcrop-tracker").width($("#myImg").width());
@@ -143,7 +147,7 @@
         $(".jcrop-tracker").height($("#myImg").height());
         $(".jcrop-holder").children().children().children().height($("#myImg").height());
         
-        }, 200);
+        }, (x+200));
         //  $(t).find("#myImg").attr('src',data);
         });
         });
@@ -181,13 +185,17 @@
         'h':$('#h').val(),
         'src':$('#myImg').attr('src')
         }, function(data){
+
+        var x=($("#myImg").height()+$("#myImg").width())*0.75;
         $("#myImg").attr('src','temp/poza.jpg');
         $("#cropbox").attr('src','temp/poza.jpg');
         $(".jcrop-holder").children("img").attr('src','temp/poza.jpg');
         $(".jcrop-holder").children().children().children("img").attr('src','temp/poza.jpg');
+        $("*").css("cursor", "progress");
         
         setTimeout(function() {
 
+        $("*").css("cursor","auto");
         //checkSize();
         $(".jcrop-holder").children("img").width($("#myImg").width());
         $(".jcrop-tracker").width($("#myImg").width());
@@ -199,7 +207,7 @@
         $(".jcrop-holder").children().children().children().height($("#myImg").height());
         topContainer=Math.abs(($("#myImg").height())-($("#myImg").width()));
         $("#cropContainer").css('top',(topContainer+80)+'px');
-        }, 200);
+        }, x);
 
         });
         });
@@ -256,7 +264,7 @@
         });
         });
 
-          $('#plsContrast').bind("click", function(){
+        $('#plsContrast').bind("click", function(){
         $.post('crop_async.php', {
         'type':'maxcontrast',
         'src':$('#myImg').attr('src')

@@ -3,6 +3,17 @@ $white: #F5F6F5;
 $h: 400px;
 $w: 960px;
 
+input
+{
+  border-radius:5px;
+}
+
+select
+{
+  border-radius:5px;
+  background-color:white;
+}
+
 body {
 position:relative;
 line-height:1.5em;
@@ -52,6 +63,8 @@ height:500px;
 
 #header-cont {
 height:257px;
+width:auto;
+float:left;
 //background:#F0F0F0;
 //border:1px solid #CCC;
 //width:260px;
@@ -79,6 +92,7 @@ height:40px
 {
 position:relative;
 float:left;
+clear:both;
 height:180px;
 width: 200px;
 top:15px;
@@ -159,12 +173,17 @@ border-radius:20px;
 {
     float: left;
     position: absolute;
-    width: 300px;
+    //width: 300px;
     margin: 0;
     padding: 0;
-    left: 250px;
-    top: 0px;
+    left: 230px;
+    top: 4px;
     z-index: 2;
+}
+
+.top-bar-menu li>span
+{
+    color:grey; position:relative; left:8px;top:7px;display:inline; float:left;
 }
 
 .top-bar-menu li a, .nav li
@@ -177,6 +196,8 @@ border-radius:20px;
     position: relative;
     background: transparent;
     display: inline;
+    float:left;
+    padding-right:20px;
 }
 .top-bar-menu li a img
 {
@@ -190,7 +211,9 @@ font-size:14px;
 margin-left:0px;
 padding:5px 10px 5px 10px;
 //border:1px solid transparent;
-display:inline-block
+display:inline;
+width:24px;
+height:24px;
    //=border-radius: 10px;
 }
 
@@ -202,9 +225,35 @@ background:-webkit-gradient(linear,left top,left 25,from(black),color-stop(5%,#3
   //border: 1px solid #515151;
   border-radius: 20px;
 }
+.top-bar-menu li p
+{
+position: relative;
+float: left;
+display: inline;
+text-align: center;
+line-height: 35px;
+padding-right: 10px;
+cursor: pointer;
+text-decoration: none;
+color: white;
+font-size: 14px;
+}
 
 #logo {
 background-image:url(/images/logo.jpg);
+background-repeat:no-repeat;
+width:200px;
+height:250px;
+position:absolute;
+left:0px;
+top:5px;
+box-shadow:0px 0px 10px #333333;
+border:1px solid grey;
+border-radius:10px;
+z-index:2;
+}
+.logo{
+  background-image:url(/images/logo.jpg);
 background-repeat:no-repeat;
 width:200px;
 height:250px;
@@ -299,7 +348,6 @@ position:relative;
    position: relative;
 }
 .view h2 {
-   text-transform: uppercase;
    color: #fff;
    text-align: center;
    position: relative;
@@ -459,83 +507,6 @@ height:24px;
 width:16px;
 left:960px;
 }
-.nav {
-float:left;
-margin:0;
-padding:0;
-//right:0;
-left:0;
-//border-bottom:none;
-//bottom:0;
-position:absolute;
-z-index:2;
-width:$w;
-background:transparent;
-//background:#292929;
-//background:-moz-linear-gradient(top,black,#3c3c3c 1px,#292929 25px);
-//background:-webkit-gradient(linear,left top,left 25,from(black),color-stop(0%,#3c3c3c),to(#292929));
-background:#292929
-}
-
-.nav li a,.nav li {
-float:left
-}
-
-.nav li {
-list-style:none;
-position:relative;
-background:transparent
-}
-
-.nav li a {
-padding:.2em 2em;
-text-decoration:none;
-color:#fff;
-//background:#292929;
-background:#292929;
-//background:-moz-linear-gradient(top,black,#3c3c3c 1px,#292929 25px);
-//background:-webkit-gradient(linear,left top,left 25,from(black),color-stop(7%,#3c3c3c),to(#292929));
-border-right:1px solid #3c3c3c;
-border-left:1px solid #292929;
-//border-bottom:1px solid #232323;
-//border-top:1px solid #545454
-}
-
-.nav li a:hover {
-background:#2a0d65;
-background:-moz-linear-gradient(top,black,#3c3c3c 1px,#292929 25px);
-background:-webkit-gradient(linear,left top,left 25,from(black),color-stop(4%,#292929),to(black));
-color:$white
-}
-
-/* Submenu */
-.nav li ul {
-display:none;
-position:absolute;
-left:0;
-top:100%;
-padding:0;
-margin:0
-}
-
-.nav li:hover > ul {
-display:block
-}
-
-.nav li ul li,.nav li ul li a {
-float:none
-}
-
-.nav li ul li {
-_display:/* for IE6 */
-inline
-}
-
-.nav li ul li a {
-width:130px;
-display:block
-}
-
 #lorem p
 {
   padding: 20px 50px 10px 50px;
@@ -704,6 +675,9 @@ left:10px;
 #loginUL li
 {
 padding-bottom:5px;  
+position:relative;
+top:15px;
+left:30px;
 }
 
 #gallery
@@ -739,8 +713,402 @@ margin:10px;
       -ms-transition: all 1s ease;
           transition: all 1s ease;
 }
-.imgAnch>img
- {
- }
-.imgAnch img:hover {
+#avatar
+{
+  position:relative;
+  float:left;
+  display: inline;
+}
+#profile
+{
+  position:relative;
+  float:left;
+   height:$h;
+   width:$w;
+   display: inline;
+}
+#profile #avatarEdit
+{
+  height: 32px;
+  width:32px;
+  font-size:20px;
+  left:200px;
+  position:relative;
+  top:0px;
+  clear:both;
+  float:left;
+  opacity:0.7;
+}
+#profile #avatarEdit:hover
+{
+  opacity: 1;
+}
+#avatar #avatarPic
+{
+  position: relative;
+  float:left;
+  width: 200px;
+  height: 200px;
+  background-color:red;
+  left:40px;
+  top:60px;
+  -webkit-border-radius: 4px;
+  -webkit-box-shadow: 1px 1px 6px #ddd;
+  -moz-box-shadow: 1px 1px 6px #ddd;
+  box-shadow: 0px 0px 10px #333333;
+  border: 1px solid grey;
+  border-radius: 10px;
+  clear:both;
+}
+#avatar #vezi
+{
+  position:relative;
+  float:left;
+  left:100px;
+  top:70px;
+  clear:both;
+}
+#user
+{
+  top:60px;
+  position:relative;
+  list-style:none;
+  text-decoration:none;
+  float:left;
+  left: 150px;
+}
+#user li
+{
+  float:left;
+  clear:both;
+  font-size:18px;
+}
+#user li p
+{
+  float:left;
+  display:inline;
+  position:relative;
+  text-align:left;
+  width:100px;
+}
+#user .plong
+{
+  width:450px;
+}
+#user li img
+{
+  float:left;
+  position:relative;
+  bottom:7px;
+  width:15px;
+  height: 15px;
+}
+.editProfile
+{
+  top:60px;
+  float:right;
+  right:30px;
+  position: relative;
+  width:24px;
+  height:24px;
+  opacity:0.7;
+}
+.editProfile:hover
+{
+  opacity: 1;
+}
+.userprofile
+{
+  text-decoration: none;
+  color:#292929;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 13px;
+}
+
+::-webkit-scrollbar-button:vertical {
+    background-color: silver;
+    border: 1px solid gray;
+}
+
+/* Turn on single button up on top, and down on bottom */
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+    display: block;
+}
+
+/* Turn off the down area up on top, and up area on bottom */
+::-webkit-scrollbar-button:vertical:start:increment,
+::-webkit-scrollbar-button:vertical:end:decrement {
+    display: none;
+}
+
+/* Place The scroll down button at the bottom */
+::-webkit-scrollbar-button:vertical:increment {
+    display: none;
+}
+
+/* Place The scroll up button at the up */
+::-webkit-scrollbar-button:vertical:decrement {
+    display: none;
+}
+
+/* Place The scroll down button at the bottom */
+::-webkit-scrollbar-button:horizontal:increment {
+    display: none;
+}
+
+/* Place The scroll up button at the up */
+::-webkit-scrollbar-button:horizontal:decrement {
+    display: none;
+}
+
+::-webkit-scrollbar-track:vertical {
+    background-color: blue;
+    border: 1px dashed pink;
+}
+
+/* Top area above thumb and below up button */
+::-webkit-scrollbar-track-piece:vertical:start {
+    border: 0px;
+}
+
+/* Bottom area below thumb and down button */
+::-webkit-scrollbar-track-piece:vertical:end {
+    border: 0px;
+}
+
+/* Track below and above */
+::-webkit-scrollbar-track-piece {
+    background-color: silver;
+}
+
+/* The thumb itself */
+::-webkit-scrollbar-thumb:vertical {
+    height: 50px;
+    background-color: gray;
+}
+
+/* The thumb itself */
+::-webkit-scrollbar-thumb:horizontal {
+    height: 50px;
+    background-color: gray;
+}
+
+/* Corner */
+::-webkit-scrollbar-corner:vertical {
+    background-color: black;
+}
+
+/* Resizer */
+::-webkit-scrollbar-resizer:vertical {
+    background-color: gray;
+}
+
+#searchInput
+{
+  color: rgb(128, 128, 128);
+  position: relative;
+  top: -10px;
+}
+#imageWrapper
+{
+  position: relative; border: 5px solid transparent; left:-10px; vertical-align:middle;padding:0; margin:0; text-align:center; position: relative; background:transparent; float:left
+}
+#modalImage
+{
+  vertical-align:middle; border-radius:10px;
+}
+#commentWrapper
+{
+  position: relative;  vertical-align:middle;padding:0; margin:0; text-align:center; position: relative; background-color: rgb(42, 42, 42);background: -moz-linear-gradient(top, black, #3c3c3c 1px, #292929 25px);
+background: -webkit-gradient(linear, left top, left 120, from(black), color-stop(0%, grey), to(#292929)); opacity:1; float:left
+}
+#smallAvatarWrapper
+{
+  position: relative; border: 1px solid transparent; vertical-align:middle;padding:0; margin:0; text-align:center; position: relative; background:white; opacity:1;float:left; left:12px;top:12px
+}
+#descriptionWrapper
+{
+  position: relative; border: 1px solid transparent; vertical-align:middle;padding:0; margin:0; text-align:center; position: relative; background:transparent; opacity:1;float:left; color:#292929;top:12px
+}
+#commentContent
+{
+  overflow-y:scroll;position: relative; border: 1px solid transparent; vertical-align:middle;padding:0; margin:0; text-align:center; position: relative; background:transparent; opacity:1;float:left; color:transparent;top:35px
+}
+#viewImageDiv
+{
+  width:800px; height:800px
+}
+#comentariu
+{
+  float:left;position: relative;top: 30px;left: 10px; font-size:11px
+}
+.editLabel
+{
+ text-align:left; float:left; width: 200px; 
+
+}
+.editInputLabel
+{
+  float:left;background-color:#fffff;border:1px solid #dbdbdb; border-radius:5px;
+}
+.signupInput{
+  float:left;background-color:#fffff;border:1px solid #dbdbdb;width:200px; border-radius:5px;
+}
+.modalP{
+position:relative; font-size:19px;padding-bottom:30px;
+}
+.comment
+{
+  width:auto; margin:0; margin-bottom:2px;left:-1px;background:-webkit-gradient(linear, left top, left 80, from(black), color-stop(0%, #3c3c3c), to(#292929));padding-bottom:25px
+}
+.commentSpan
+{
+  position:relative; width:40px;height:40px; display:inline-block;float:left;
+}
+#tutorial
+{
+  position:relative;
+  text-align: justify;
+  padding:40px;
+  margin:10px;
+  text-indent: 40px;
+}
+#tutorial h1
+{
+  font-size:20px;
+  text-decoration: underline;
+  padding-bottom:10px;
+}
+#tutorial h2
+{
+  font-size:18px;
+  margin-top: 20px;
+}
+.tutsWork
+{
+  left:30px;
+}
+.nrFramed
+{
+  position:relative;
+  float:left;
+  left:50px;
+  top:10px;
+}
+.pFramed
+{
+  position:relative;
+  float:left;
+  left:20px;
+  top:12px;
+  font-size: 20px;
+}
+#mention
+{
+  font-size:12px;
+  clear:right;
+  left:0;
+}
+
+#contestUpload
+{
+  width:150px;
+  text-align: left;
+  left:0;
+  float:right;
+}
+
+#frameSpan
+{
+  position:relative;
+  float:left;
+  width:60px;
+  height:20px;
+  top:20px;
+  left:60px;
+}
+
+#frameWrap
+{
+  width:20px;
+  height:20px;
+  float:left;
+  position:relative;
+  left:10px;
+  margin-left:10px
+}
+
+#frameNo
+{
+  float:left;
+  position:relative;
+  left:15px
+}
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+#table {
+  border: 1px solid #DFDFDF;
+  background-color: #F9F9F9;
+  width: 90%;
+  padding:10px;
+  margin: 50px;
+  margin-top: 20px;
+  color: #333;
+}
+#table td, #table th {
+  border-top-color: white;
+  border-bottom: 1px solid #DFDFDF;
+  color: #555;
+}
+#table th {
+  padding: 7px 7px 8px;
+  text-align: center;
+  line-height: 1.3em;
+  font-size: 14px;
+}
+#table td {
+  font-size: 16px;
+  padding: 4px 7px 2px;
+  vertical-align: top;
+  text-align: center;
+}
+#table td img
+{
+  position:relative;
+  top:2px;
+  width:15px;
+  height:15px;
+  padding:0 10px 0 10px;
+}
+.tutSpan
+{
+ color: black;
+padding-left: 50px;
+float: left;
+}
+
+#errorImg
+{
+  position: relative;
+  float:left;
+  left:100px;
+  top:100px;
+
+}
+#errorText
+{
+  position: relative;
+  float:left;
+  left:200px;
+  top:150px;
+  font-size: 22px;
+  color:black;
+  text-align:justify; 
 }
